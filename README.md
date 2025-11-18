@@ -23,14 +23,17 @@ Each assignment is implemented in **Java**, follows clean **OOP principles**, us
 
 ## Overview
 
-This module implements the classic **Producer–Consumer concurrency pattern** using:
-- Java threads  
-- Low-level synchronization (`wait()` / `notifyAll()`)  
-- A bounded shared queue  
-- Deadlock-free coordination logic  
-- Full JUnit test coverage  
+This assignment implements a classic producer–consumer pattern, demonstrating thread synchronization and communication.
 
-This assignment demonstrates thread-safe operations, proper signaling between producers and consumers, and controlled access to a shared resource.
+The program simulates concurrent data transfer between:
+- a producer thread that reads from a source container and places items into a shared queue, and
+- a consumer thread that reads from the queue and stores items in a destination container. 
+
+To meet the required testing objectives, the system includes:
+- Thread synchronization
+- Concurrent programming
+- Blocking queue behavior (via a custom bounded buffer)
+- Wait/Notify mechanism (classic implementation included)
 
 ---
 
@@ -45,10 +48,22 @@ Shared `Queue<Integer>` with a fixed capacity ensures producers cannot overflow 
 - Uses `synchronized` blocks for mutual exclusion  
 - Uses `notifyAll()` to awaken waiting threads safely  
 
-### **Concurrency Reliability**
-- Prevents race conditions  
-- Avoids deadlocks  
-- Ensures consistent state transitions  
+### **Concurrent Programming**
+The system runs producer and consumer threads concurrently, demonstrating proper thread lifecycle management and inter-thread communication.
+- Implemented using ExecutorService (modern)  
+- Classic version uses raw Java threads
+
+### **Blocking Queue Behavior**
+A custom bounded blocking buffer ensures proper backpressure:
+- Producer blocks when the buffer reaches capacity
+- Consumer blocks when buffer is empty
+- Ensures controlled, deadlock-free data flow
+
+### **Wait/Notify Mechanism**
+A separate ProducerConsumerWaitNotify implementation demonstrates:
+- synchronized blocks
+- wait() to suspend threads
+- notifyAll() to resume thread execution
 
 ### **Traceable Output**
 Console logs clearly show production and consumption workflow.
@@ -83,53 +98,56 @@ mvn test
 
 ## Overview
 
-This module reads a sales.csv file and computes analytics using:
-- Java File I/O
-- Java Streams API
-- Immutable POJO modeling
-- Aggregation pipelines
-- Clean exception handling
-- JUnit test validation
+This module reads sales data from a CSV file and performs multiple analytical queries using **functional programming paradigms**, **Stream operations**, **lambda expressions**, and **data aggregation techniques**, exactly as required in the problem statement.
 
-It demonstrates structured data parsing, stream processing, and safe data transformations.
+The implementation demonstrates proficiency with the Java Streams API by executing various **aggregation and grouping operations** on structured sales data.
 
 ## Features & Highlights
-### **Strongly-Typed POJO Model**
-### SalesRecord represents each row with fields:
-- Order ID
-- Customer
-- Region
-- Product
-- Quantity
-- Unit Price
-- Date
 
-Immutable fields ensure safe and predictable operations throughout processing.
+### **Strongly-Typed POJO Model**
+`SalesRecord` represents each row of the CSV dataset with fields for:
+- Order ID  
+- Customer  
+- Region  
+- Product  
+- Quantity  
+- Unit Price  
+- Date  
+
+The model is immutable, ensuring safe and predictable functional transformations during analysis.
 
 ### **SalesAnalyzer Service**
-### Provides:
-- calculateTotalRevenue()
-- calculateTotalQuantity()
-- revenueByProduct()
-- sortByRevenue()
-- filterByRegion()
 
-All implemented with modern Java Stream operations.
+Implements all analytical operations using **functional programming**, **Stream pipelines**, and **lambda expressions**, including:
+- total revenue calculation  
+- revenue grouped by product  
+- order count grouped by region  
+- highest-revenue product lookup  
+- average order value computation  
+
+All analytics use **aggregation and grouping** as described in the assignment’s detailed instructions.
 
 ### **Robust CSV Parsing**
-### Handles:
-- Invalid numeric values
-- Missing fields
-- CSV formatting errors
-- Graceful failures with helpful error messages.
 
-### **Full JUnit Tests**
-### Covers:
-- Revenue correctness
-- Quantity aggregation
-- Empty dataset behavior
-- Invalid input scenarios
-- Product/region analytics
+Handles:
+- Numeric parsing errors  
+- Missing or malformed fields  
+- Irregular CSV formatting  
+- Safe fallback behavior with descriptive error messages  
+
+The parsed data is converted into immutable POJOs before being processed by Stream operations.
+
+### **Full JUnit Test Coverage**
+
+Unit tests validate:
+- Correctness of aggregation logic  
+- Stream-based grouping operations  
+- Behavior with empty or invalid datasets  
+- Functional programming flows  
+- Lambda-driven data transformations  
+
+These tests ensure the application meets all four testing objectives:  
+**functional programming**, **Stream operations**, **data aggregation**, and **lambda expressions.**
 
 ## Example Input (sales.csv)
 ```bash
