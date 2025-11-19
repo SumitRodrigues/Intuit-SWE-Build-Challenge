@@ -85,7 +85,7 @@ mvn clean install
 mvn exec:java -Dexec.mainClass="com.intuit.pc001.ProducerConsumerWaitNotify"
 ```
 ## Output:
-![Output Screenshot](Intuit-SWE-Build-Challenge/Intuit-assignment1-pc001-producer-consumer/src/image/Assignment 1 Output.png)
+![Output Screenshot](Intuit-assignment1-pc001-producer-consumer/src/image/Assignment 1 Output.png)
 
 
 ## Run Tests
@@ -164,7 +164,7 @@ mvn exec:java -Dexec.mainClass="com.intuit.sa001.main"
 ```
 
 ## Output:
-![Output Screenshot](Intuit-SWE-Build-Challenge/Intuit-assignment2-sa001-sales-analysis/src/image/Assignment 2 Output.png)
+![Output Screenshot](Intuit-assignment2-sa001-sales-analysis/src/image/Assignment 2 Output.png)
 
 
 ## Run Tests
